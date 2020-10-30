@@ -21,5 +21,12 @@ pipeline {
                 sh 'docker push tmiklu/hello-world'
             }
         }
+        stage('Inside') {
+            steps {
+                docker.image('image:${BUILD_NUMBER}').inside {
+                sh 'curl localhost'
+                }
+            }
+        }
     }
 }
