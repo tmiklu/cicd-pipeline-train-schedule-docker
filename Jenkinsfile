@@ -23,8 +23,10 @@ pipeline {
         }
         stage('Inside') {
             steps {
-                docker.image('image:${BUILD_NUMBER}').inside {
-                sh 'curl localhost'
+                script {
+                    docker.image('image:${BUILD_NUMBER}').inside {
+                    sh 'curl localhost:80'
+                    }
                 }
             }
         }
