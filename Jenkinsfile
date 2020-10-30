@@ -22,15 +22,5 @@ pipeline {
                         app.push(image:"${BUILD_NUMBER}")
             }
         }
-        stage('Inside') {
-            steps {
-                script {
-                    docker.image('image:${BUILD_NUMBER}').inside {
-                    sh 'curl localhost:80'
-                    }
-                }
-            }
-        }
     }
-}
 }
