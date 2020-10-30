@@ -14,5 +14,11 @@ pipeline {
                 sh 'docker build -t image .'
             }
         }
+        stage('Push-container') {
+            steps {
+                echo 'Pushing container to docker hub'
+                sh 'docker push tmiklu/hello-world'
+            }
+        }
     }
 }
