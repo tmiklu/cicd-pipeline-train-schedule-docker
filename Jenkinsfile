@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo 'Pushing container to docker hub'
                 script {
-                    docker.withRegistry('https://hub.docker.com', 'docker_hub')
+                    docker.withDockerRegistry('https://hub.docker.com', 'docker_hub')
                         app.push(image:"${BUILD_NUMBER}")
                 }
             }
