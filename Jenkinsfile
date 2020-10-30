@@ -17,6 +17,7 @@ pipeline {
         stage('Push-container') {
             steps {
                 echo 'Pushing container to docker hub'
+                sh 'docker login -u tmiklu -p Tomas1991'
                 sh 'docker push tmiklu/hello-world'
             }
         }
