@@ -11,7 +11,7 @@ pipeline {
         stage('Build-container') {
             steps {
                 echo 'Building docker image from Dockerfile'
-                sh 'docker build -t image .'
+                sh 'docker build -t image:${BUILD_NUMBER} .'
             }
         }
         stage('Push-container') {
