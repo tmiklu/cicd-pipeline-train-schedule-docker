@@ -1,27 +1,11 @@
-pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Running build automation'
-                sh './gradlew build --no-daemon'
-                archiveArtifacts artifacts: 'dist/trainSchedule.zip'
-            }
-        }
-        stage('Build-container') {
-            steps {
-                echo 'Building docker image from Dockerfile'
-                sh 'docker build -t image:${BUILD_NUMBER} .'
-            }
-        }
+node {
         stage('Push-container') {
             steps {
                 echo 'Pushing container to docker hub'
                 script {
                     docker.withDockerRegistry('https://hub.docker.com', 'docker_hub')
-                        app.push(image:"${BUILD_NUMBER}")
+                        app.push(image:12)
                 }
             }
         }
-    }
 }
