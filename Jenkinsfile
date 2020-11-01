@@ -1,5 +1,9 @@
 node {
-        checkout scm
-        docker.withRegistry('https://hub.docker.com', 'docker_hub')
-         app.push(image:12)
+    checkout scm
+
+    def customImage = docker.build("image:latest")
+
+    customImage.inside {
+        sh 'echo hello'
+    }
 }
