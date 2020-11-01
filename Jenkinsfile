@@ -6,7 +6,7 @@ node {
     customImage.inside {
         sh 'echo hello'
     }
-    docker.withRegistry('https://registry.docker.hub.com', 'docker') {
+    docker.withRegistry('registry.hub.docker.com', 'docker') {
 
     customImage = docker.build("image:${env.BUILD_ID}")
 
