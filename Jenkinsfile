@@ -5,8 +5,7 @@ node {
 
     customImage.inside {
         sh 'echo hello'
-        
-    customImage.push()
-        
     }
+    
+    customImage.push()
 }
