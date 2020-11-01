@@ -7,5 +7,8 @@ node {
         sh 'echo hello'
     }
     
+    withDockerRegistry([ credentialsId: "docker", url: "https://hub.docker.com" ]) {
+        
     customImage.push()
+    }
 }
